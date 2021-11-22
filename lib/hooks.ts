@@ -31,6 +31,19 @@ export function useProducts() {
     };
 }
 
+export function AddScriptsFun(){
+    const { context } = useSession();
+    // const params = new URLSearchParams({ context }).toString();
+    // Request is deduped and cached; Can be shared across components
+     const { data, error } = useSWR(context ? [`/v3/content/scripts`, context] : null, fetcher);
+
+    return {
+        data,
+        isLoading: !data && !error,
+        error,
+    };
+}
+
 export function useProductList(query?: QueryParams) {
     const { context } = useSession();
     const params = new URLSearchParams({ ...query, context }).toString();

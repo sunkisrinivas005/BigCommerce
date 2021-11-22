@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { bigcommerceClient, getSession } from '../../../lib/auth';
 
 export default async function products(req: NextApiRequest, res: NextApiResponse) {
+    console.log('how.. its comming..')
     const {
         body,
         query: { pid },
